@@ -8,7 +8,7 @@
 6. Перевірити результати на localhost:5000
 
 ## Heroku
-TODO
+https://dbis-lab3.herokuapp.com
 
 ## Логічна діаграма
 ![erd](https://user-images.githubusercontent.com/44733274/117507572-e8738100-af8f-11eb-9245-2c3547bdc042.png)
