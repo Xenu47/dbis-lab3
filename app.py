@@ -2,7 +2,7 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://raqmvjqdkeuihs:c32d4f21e9e8c724c8e67054c42a01ec67a30dbedfb99867caa85613f89b445b@ec2-63-34-97-163.eu-west-1.compute.amazonaws.com:5432/d7i1c1568hrgrd'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://eqanjdysdtqudu:7af14f5cea00848c1232da0693de95dc4bc6d75b367a9f80c8052a43fa7436c5@ec2-54-220-53-223.eu-west-1.compute.amazonaws.com:5432/d945a0bt86qgmm'
 db = SQLAlchemy(app)
 
 class Publisher(db.Model):
