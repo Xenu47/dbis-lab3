@@ -1,3 +1,5 @@
+var state = [] 
+
 function try_update(event) {
   var table_row = event.target.parentElement.parentElement;
   var cells = table_row.children
@@ -6,6 +8,7 @@ function try_update(event) {
   for (var i = 0; i < cells.length; i++){
     var temp = cells[i]
     var temp_text = temp.innerText
+    state.push(temp_text)
     if (temp.children.length != 0){
       break
     }
@@ -34,4 +37,15 @@ function try_update(event) {
     }
   }
   cells[cells.length-2].innerHTML = '<button type="submit" class="btn btn-primary" form="'+form_name+'">Update</button>';
+  cells[cells.length-1].innerHTML = '<button type="button" class="btn btn-warning" onclick="cancel_update(event)">Cancel </button>';
+}
+
+function cancel_update(event) {
+  var table_row = event.target.parentElement.parentElement;
+  var cells = table_row.children
+  for (var i = 0; i < cells.length; i++){
+  	cells[i].innerHTML = state[i]
+  }
+  cells[cells.length-2].innerHTML = '<button type="button" class="btn btn-primary" onclick="try_update(event)">Update</button>';
+  cells[cells.length-1].innerHTML = '<a type="button" class="btn btn-danger" href="{{app_name}}/Delete/{{a.name}}">Delete</a>';
 }
