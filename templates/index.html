@@ -86,7 +86,7 @@
               <td>{{ a.rating }}</td>
               <td>{{ a.genre }}</td>
               <td><button type="button" class="btn btn-primary" onclick="try_update(event)">Update</button></td>
-              <td><a type="button" class="btn btn-danger" href="{{app_name}}/Delete/{{a.name}}">Delete</a></td>
+              <td><button type="button" class="btn btn-danger" onclick="try_delete(event)" href="{{app_name}}/Delete/{{a.name}}">Delete</button></td>
             </tr>
           {% endfor %}
           <form action="{{app_name}}/Create" method="post">
@@ -125,7 +125,7 @@
             <td placeholder="name">{{ p.name }}</td>
             <td placeholder="email">{{ p.email }}</td>
             <td><button type="button" class="btn btn-primary" onclick="try_update(event)">Update</button></td>
-            <td><a type="button" class="btn btn-danger" href="{{pub_name}}/Delete/{{p.name}}">Delete</a></td>
+            <td><button type="button" class="btn btn-danger" onclick="try_delete(event)" href="{{pub_name}}/Delete/{{p.name}}">Delete</button></td>
           </tr>
           {% endfor %}
           <form action="{{pub_name}}/Create" method="post">

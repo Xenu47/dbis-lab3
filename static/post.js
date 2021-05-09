@@ -21,6 +21,7 @@ function try_update(event) {
         var sel = cells[i].children[0]
         sel.options[sel.selectedIndex].value = temp_text;
         sel.options[sel.selectedIndex].textContent = temp_text;
+        cells[i].children[0].setAttribute('placeholder', temp_text);
         cells[i].children[0].setAttribute('form', form_name);
         cells[i].children[0].setAttribute('name', names[i]);
         cells[i].children[0].children[0].removeAttribute('disabled');
@@ -34,7 +35,7 @@ function try_update(event) {
     }
   }
   cells[cells.length-2].innerHTML = '<button type="submit" class="btn btn-primary" form="'+form_name+'">Update</button>';
-  cells[cells.length-1].innerHTML = '<button type="button" class="btn btn-warning" onclick="cancel_update(event)">Cancel </button>';
+  cells[cells.length-1].innerHTML = '<button type="button" class="btn btn-warning" onclick="cancel_update(event)" href="'+cells[cells.length-1].firstElementChild.getAttribute('href')+'">Cancel</button>';
 }
 
 function cancel_update(event) {
@@ -44,5 +45,19 @@ function cancel_update(event) {
   	cells[i].innerHTML = cells[i].firstElementChild.getAttribute('placeholder')
   }
   cells[cells.length-2].innerHTML = '<button type="button" class="btn btn-primary" onclick="try_update(event)">Update</button>';
-  cells[cells.length-1].innerHTML = '<a type="button" class="btn btn-danger" href="{{app_name}}/Delete/{{a.name}}">Delete</a>';
+  cells[cells.length-1].innerHTML = '<button type="button" class="btn btn-danger" onclick="try_delete(event)" href="'+event.target.getAttribute('href')+'">Delete</button>';
+}
+
+function try_delete(event) {
+  var table_row = event.target.parentElement.parentElement;
+  var cells = table_row.children
+  cells[cells.length-2].innerHTML = '<a type="button" class="btn btn-danger" href="'+event.target.getAttribute('href')+'">Delete</a>';
+  cells[cells.length-1].innerHTML = '<button type="button" class="btn btn-warning" onclick="cancel_delete(event)" href="'+event.target.getAttribute('href')+'">Cancel</button>';
+}
+
+function cancel_delete(event) {
+  var table_row = event.target.parentElement.parentElement;
+  var cells = table_row.children
+  cells[cells.length-2].innerHTML = '<button type="button" class="btn btn-primary" onclick="try_update(event)">Update</button>';
+  cells[cells.length-1].innerHTML = '<button type="button" class="btn btn-danger" onclick="try_delete(event)" href="'+event.target.getAttribute('href')+'">Delete</button>';
 }
